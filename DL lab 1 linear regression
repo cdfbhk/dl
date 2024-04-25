@@ -85,3 +85,48 @@ print(X_train.shape[1])
 # Fitting the data to the model
 model.fit(X_train, y_train, epochs = 100)
 
+# Evaluating the model
+y_pred = model.predict(X_test)
+r2 = r2_score(y_test, y_pred)
+rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+print("R2 Score =", r2)
+print("RMSE Score =", rmse)
+
+# Reshape y_pred
+y_pred = np.squeeze(y_pred)
+
+# Calculate Mean Absolute Error
+mae = np.mean(np.abs(y_pred - y_test))
+print("Mean Absolute Error:", mae)
+
+
+# Evaluating  the model
+y_pred = model.predict(X_test)
+r2 = r2_score(y_test, y_pred)
+rmse = (np.sqrt(mean_squared_error(y_test, y_pred)))
+print("R2 Score = ", r2)
+print("RMSE Score = ", rmse)
+
+
+# Reshape y_pred
+y_pred = np.squeeze(y_pred)
+
+# Calculate Mean Absolute Error
+mae = np.mean(np.abs(y_pred - y_test))
+print("Mean Absolute Error:", mae)
+
+
+# Scatter plot of predicted vs. actual prices
+plt.figure(figsize=(8, 6))
+plt.scatter(y_test, y_pred, alpha=0.5, label='Data Points')
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], color='red', linestyle='--', label='Perfect Prediction Line')
+plt.title('Predicted vs. Actual Prices')
+plt.xlabel('Actual Prices')
+plt.ylabel('Predicted Prices')
+plt.legend()
+plt.text(10, 45, 'Actual Values', color='blue', fontsize=10, ha='center')
+plt.text(45, 10, 'Predicted Values', color='blue', fontsize=10, rotation=90, va='center')
+plt.show()
+
+     
+
